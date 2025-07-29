@@ -1,0 +1,7 @@
+theme=light:catppuccin-latte,dark:dracula
+font-size=14
+font-family=JetBrains Mono
+font-family-bold=JetBrains Mono Bold
+font-family-italic=JetBrains Mono Italic
+font-family-bold-italic=JetBrains Mono Bold Italic
+keybind = shift+enter=text:\n

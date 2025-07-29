@@ -1,0 +1,114 @@
+cd ..
+cd ..
+ls
+clear
+cd ~
+cd .config/zsh
+clear
+nvim .zshrc
+vim
+vim .zshrc
+vim
+npm run start:dev
+npm run start
+npm run spec:watch
+npm run spec:watch
+npm run start
+npm run start
+npm run start
+npm run start
+npm run start
+npm i redux-form -D
+npm i redux -D
+npm i react-redux -D
+z dasherfunctionalmockup
+vim
+brew upgrade --cask wezterm
+/Applications/QOwnNotes.app/Contents/MacOS/QOwnNotes ; exit;
+/Applications/QOwnNotes.app/Contents/MacOS/QOwnNotes ; exit;
+/Applications/QOwnNotes.app/Contents/MacOS/QOwnNotes ; exit;
+cat PSL | "WÅ‚adysÅ‚aw Kosiniak â€ƒ³ Kamysz (PSL) â€ƒ³ wicepremier, minister obrony narodowej;\
+Krzysztof Gawkowski (Nowa Lewica) â€ƒ³ wicepremier, minister cyfryzacji;\
+RadosÅ‚aw Sikorski (KO) â€ƒ³ minister spraw zagranicznych;\
+Adam Bodnar (bezpartyjny) â€ƒ³ minister sprawiedliwoÅƒ»ci;\
+Marcin KierwiÅƒ¤ski (KO) â€ƒ³ minister spraw wewnÄƒ¹trznych;\
+Borys Budka (KO) â€ƒ³ minister aktywÃ³w paÅƒ¤stwowych;\
+Andrzej DomaÅƒ¤ski (KO) â€ƒ³ minister finansÃ³w;\
+BartÅ‚omiej Sienkiewicz (KO) â€ƒ³ minister kultury i dziedzictwa narodowego;\
+CzesÅ‚aw Siekierski (PSL) â€ƒ³ minister rolnictwa i rozwoju wsi;\
+Barbara Nowacka (KO) â€ƒ³ minister edukacji;\
+Dariusz Wieczorek (Nowa Lewica)- minister nauki i szkolnictwa wyÅ¼szego;\
+Adam SzÅ‚apka (KO)â€ƒ³ minister do spraw Unii Europejskiej;\
+Izabela Leszczyna (KO) â€ƒ³ minister zdrowia;\
+Dariusz Klimczak (PSL) â€ƒ³ minister infrastruktury;\
+Krzysztof Hetman (PSL) â€ƒ³ minister rozwoju i technologii;\
+SÅ‚awomir Nitras (KO) â€ƒ³ minister sportu i turystyki;\
+Tomasz Siemoniak (KO) â€ƒ³ koordynator sÅ‚uÅ¼b specjalnych;\
+Paulina Hennig-Kloska (Polska 2050) â€ƒ³ minister klimatu i Åƒ»rodowiska;"
+xcodebuild clean
+lk
+brew update qmk-toolbox
+brew upgrade qmk-toolbox
+brew uninstall qmk-toolbox
+brew install --cask qmk-toolbox
+diskutil apfs listSnapshots /
+lk
+diskutil apfs listSnapshot /
+diskutil apfs listSnapshots /
+vim
+z
+cd ~/.config
+ls
+cd ..
+/
+cd /
+ls
+cd Users
+ls
+cd lukaszmorawski
+cd /.config
+chezmoi
+cd ~/.local/share/chezmoi
+ls
+cd exact_private_dot_config
+ls
+cd exact_private_nvim
+ls
+vim init.lua
+vim stylua.toml
+..
+cd ..
+ls
+nvim
+neovim
+clear
+cd ~/.config/nvim
+ls
+cd ..
+ls
+~
+ls
+brew install --cask ghostty
+/Applications/MacVim.app/Contents/bin/mvim ; exit;
+vim -c 'call cursor(1,9)' -c startinsert /var/folders/ry/qjzm6fy52dv10_6nbfdvj5rh0000gp/T/qutebrowser-editor-9v32du9r
+psql -h db.fotogrammetrik.com -d mosaic -U rpylyp -W "sslmode=require"
+ssh db.fotogrammetrik.com
+ssh lukaszm@db.fotogrammetrik.com
+vim
+z ids
+vim
+/Users/lukaszmorawski/tyrka/ids-capture-mobile/node_modules/.generated/launchPackager.command ; exit;
+/Users/lukaszmorawski/tyrka/ids-capture-mobile/node_modules/.generated/launchPackager.command ; exit;
+g
+lazygit
+git config user.name "inspmoore"
+git config user.email "elektrybaut@gmail.com"
+git config --local --list
+git remote add origin git@github.com:inspmoore/dotfiles.git
+git branch -M main
+git push -u origin main
+git push -u origin main
+git push -u origin main 
+lazygit
+..
+cd ..
