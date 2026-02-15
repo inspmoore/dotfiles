@@ -22,5 +22,9 @@ export EDITOR="nvim"
 # zoxide
 eval "$(zoxide init zsh)"
 export PATH="$PATH:./node_modules/.bin"
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 # GPG
 export GPG_TTY=$(tty)
