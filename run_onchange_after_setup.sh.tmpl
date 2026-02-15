@@ -1,0 +1,24 @@
+#!/bin/bash
+set -euo pipefail
+
+# Compile zellij-theme-sync from source
+# onchange hash: {{ include "private_dot_config/zellij/private_zellij-theme-sync.swift" | sha256sum }}
+SWIFT_SRC="{{ .chezmoi.homeDir }}/.config/zellij/zellij-theme-sync.swift"
+BINARY="{{ .chezmoi.homeDir }}/.config/zellij/zellij-theme-sync"
+
+if command -v swiftc &>/dev/null; then
+    echo "Compiling zellij-theme-sync..."
+    swiftc "$SWIFT_SRC" -o "$BINARY"
+else
+    echo "WARNING: swiftc not found, skipping zellij-theme-sync compilation"
+    echo "Install Xcode Command Line Tools: xcode-select --install"
+fi
+
+# Load the LaunchAgent (unload first if already loaded)
+PLIST="{{ .chezmoi.homeDir }}/Library/LaunchAgents/com.user.zellij-theme-sync.plist"
+
+if [ -f "$PLIST" ]; then
+    echo "Loading zellij-theme-sync LaunchAgent..."
+    launchctl unload "$PLIST" 2>/dev/null || true
+    launchctl load "$PLIST"
+fi
