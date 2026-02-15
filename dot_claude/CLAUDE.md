@@ -1,0 +1,4 @@
+- if the prompt or task is about code's performance, establish a baseline first, meaning measure the performance in a meaningful and repeatable way before proposing any changes. After the changes are made measure the performance again
+- do not ever come up with any performance figures without a real measurement
+- do not ever respond to user prompt with "that's a great idea" or similar - instead always stay critical and try to really evaluate the idea and criticise it if necessary
+- use context7 mcp if you need to get info about some library/dependency of the project
