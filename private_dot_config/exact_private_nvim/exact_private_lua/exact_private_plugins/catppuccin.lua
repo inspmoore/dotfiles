@@ -6,6 +6,13 @@ return {
   config = function()
     require("catppuccin").setup({
       transparent_background = true,
+      term_colors = true,
+      custom_highlights = function(colors)
+        return {
+          LazyGitNormal = { bg = colors.base },
+          LazyGitBorder = { fg = colors.blue, bg = colors.base },
+        }
+      end,
     })
     vim.cmd.colorscheme("catppuccin")
     vim.cmd.hi("Comment gui=none")

@@ -342,8 +342,11 @@ load_plugins {
 // Choose the theme that is specified in the themes section.
 // Default: default
 // 
-// theme "dracula"
-theme "retro-wave"
+// theme dark
+// theme "retro-wave"
+
+// theme light
+theme "catppuccin-latte"
 
 // Choose the base input mode of zellij.
 // Default: normal

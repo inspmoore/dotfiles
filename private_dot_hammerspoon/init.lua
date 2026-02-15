@@ -190,6 +190,9 @@ hs.hotkey.bind(
 			[singleKey("t", "Terminal")] = function()
 				hs.application.launchOrFocus("Ghostty")
 			end,
+			[singleKey("b", "Basecamp")] = function()
+				hs.application.launchOrFocus("CelcomDigi - Digital Engineering - Basecamp")
+			end,
 			[singleKey("k", "Calendar")] = function()
 				hs.application.launchOrFocus("Calendar")
 			end,
@@ -215,20 +218,11 @@ hs.hotkey.bind(
 				[singleKey("q", "Qutebrowser")] = function()
 					hs.application.launchOrFocus("qutebrowser")
 				end,
-				[singleKey("a", "Arc")] = function()
-					hs.application.launchOrFocus("Arc")
+				[singleKey("c", "Chrome")] = function()
+					hs.application.launchOrFocus("Google Chrome")
 				end,
 				[singleKey("s", "Safari")] = function()
 					hs.application.launchOrFocus("Safari")
-				end,
-				[singleKey("f", "Firefox")] = function()
-					hs.application.launchOrFocus("Firefox Developer Edition")
-				end,
-				[singleKey("o", "Orion")] = function()
-					hs.application.launchOrFocus("Orion")
-				end,
-				[singleKey("b", "Brave")] = function()
-					hs.application.launchOrFocus("Brave")
 				end,
 			},
 			[singleKey("s", "Messaging+")] = {
@@ -239,7 +233,7 @@ hs.hotkey.bind(
 					hs.application.launchOrFocus("Microsoft Teams")
 				end,
 			},
-			[singleKey("b", "Debugging+")] = {
+			[singleKey("d", "Debugging+")] = {
 				[singleKey("p", "Proxyman")] = function()
 					hs.application.launchOrFocus("Proxyman")
 				end,
