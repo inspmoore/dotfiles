@@ -1,10 +1,4 @@
 {
-  "enabledPlugins": {
-    "pr-review-toolkit@claude-plugins-official": true,
-    "feature-dev@claude-plugins-official": true,
-    "react-native-best-practices@callstack-agent-skills": true
-  },
-  "alwaysThinkingEnabled": true,
   "hooks": {
     "Stop": [
       {
@@ -26,5 +20,12 @@
         ]
       }
     ]
-  }
+  },
+  "enabledPlugins": {
+    "pr-review-toolkit@claude-plugins-official": true,
+    "feature-dev@claude-plugins-official": true,
+    "react-native-best-practices@callstack-agent-skills": true,
+    "swift-lsp@claude-plugins-official": true
+  },
+  "alwaysThinkingEnabled": true
 }

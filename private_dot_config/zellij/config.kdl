@@ -346,7 +346,7 @@ load_plugins {
 // theme "retro-wave"
 
 // theme light
-theme "catppuccin-latte"
+theme "retro-wave"
 
 // Choose the base input mode of zellij.
 // Default: normal
