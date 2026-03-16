@@ -1,0 +1,4 @@
+[mgr]
+prepend_keymap = [
+  { on = "<C-c>", run = "quit --no-cwd-file", desc = "Quit without changing dir" },
+]
