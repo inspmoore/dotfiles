@@ -6,7 +6,7 @@ local map = vim.keymap.set
 -- local dmap = vim.keymap.del
 -- local Navigator = require("zellij-nav")
 -- local FZF = require("fzf-lua")
-local wtv = require("utils.wezterm")
+local nav = require("utils.navigator")
 -- local Snacks = require("snacks")
 
 -- copy whole buffer with ctrl+c in normal mode
@@ -26,11 +26,11 @@ map("n", "U", "<C-r>")
 -- map("n", "<C-k>", Navigator.up)
 -- map("n", "<C-h>", Navigator.left)
 -- map("n", "<C-l>", Navigator.right)
--- wezterm navigation
-map({ "n", "t" }, "<C-j>", wtv.navigate("j"))
-map({ "n", "t" }, "<C-k>", wtv.navigate("k"))
-map({ "n", "t" }, "<C-h>", wtv.navigate("h"))
-map({ "n", "t" }, "<C-l>", wtv.navigate("l"))
+-- terminal multiplexer navigation
+map({ "n", "t" }, "<C-j>", nav.navigate("j"))
+map({ "n", "t" }, "<C-k>", nav.navigate("k"))
+map({ "n", "t" }, "<C-h>", nav.navigate("h"))
+map({ "n", "t" }, "<C-l>", nav.navigate("l"))
 -- spectre replace in current files
 map("n", "<leader>sf", '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>')
 
