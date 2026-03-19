@@ -88,6 +88,8 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 eval "$(rbenv init -)"
 
+eval "$(fnm env)"
+
 # pnpm
 export PNPM_HOME="{{ .chezmoi.homeDir }}/Library/pnpm"
 case ":$PATH:" in
