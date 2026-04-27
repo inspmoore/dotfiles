@@ -39,12 +39,19 @@ case "$ACTION" in
                 tmux new-session -d -s "$SESSION" -c "$cwd"
                 tmux set-option -t "$SESSION" status off
             else
-                # Sync cwd
-                cwd=$(tmux display-message -p '#{pane_current_path}')
-                float_cwd=$(tmux display -t "$SESSION" -p '#{pane_current_path}')
-                if [ "$cwd" != "$float_cwd" ]; then
-                    tmux send-keys -t "$SESSION" " cd \"$cwd\"" C-m
-                fi
+                # Sync cwd — only safe when the float pane is at a shell prompt.
+                # Otherwise the keys would be interpreted by whatever program is
+                # running (e.g. nvim), corrupting its state.
+                float_cmd=$(tmux display -t "$SESSION" -p '#{pane_current_command}')
+                case "$float_cmd" in
+                    bash|zsh|fish|sh|dash|ksh|tcsh)
+                        cwd=$(tmux display-message -p '#{pane_current_path}')
+                        float_cwd=$(tmux display -t "$SESSION" -p '#{pane_current_path}')
+                        if [ "$cwd" != "$float_cwd" ]; then
+                            tmux send-keys -t "$SESSION" " cd \"$cwd\"" C-m
+                        fi
+                        ;;
+                esac
             fi
 
             w=$(get_dim "$WIDTH_VAR" "$DEFAULT_WIDTH")
