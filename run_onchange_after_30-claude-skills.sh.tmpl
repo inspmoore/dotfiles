@@ -15,7 +15,13 @@ echo "==> Agent skills (global)"
 if [ -e "$HOME/.claude/skills/{{ $name }}" ]; then
   echo "  = {{ $name }}"
 else
-  npx -y skills add -g -y -s {{ $name | quote }} {{ $s.source | quote }} >/dev/null 2>&1 \
-    && echo "  + {{ $name }}" || echo "  ! {{ $name }} failed ({{ $s.source }})"
+  # NB: the skills CLI takes the SOURCE as a positional arg BEFORE the flags.
+  # `skills add -g -s <name> <source>` fails with "Missing required argument: source".
+  if npx -y skills add {{ $s.source | quote }} -g -y -s {{ $name | quote }} >/dev/null 2>&1; then
+    echo "  + {{ $name }}"
+  else
+    echo "  ! {{ $name }} failed ({{ $s.source }}) - run manually to see why:"
+    echo "      npx skills add {{ $s.source }} -g -s {{ $name }}"
+  fi
 fi
 {{- end }}
