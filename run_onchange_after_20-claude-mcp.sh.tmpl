@@ -1,0 +1,18 @@
+#!/bin/bash
+# Register user-scope MCP servers declared in dot_claude/mcp-servers.json.
+# ~/.claude.json itself is NEVER synced - it is 115KB of runtime state
+# (userID, statsig caches, per-project history). This script rebuilds only
+# the mcpServers portion of it from a manifest we DO own.
+# manifest hash: {{ include "dot_claude/mcp-servers.json" | sha256sum }}
+set -uo pipefail
+
+if ! command -v claude >/dev/null 2>&1; then
+  echo "claude CLI not found - skipping MCP bootstrap"; exit 0
+fi
+
+echo "==> Claude MCP servers (user scope)"
+{{- range $name, $cfg := (include "dot_claude/mcp-servers.json" | fromJson) }}
+claude mcp remove -s user {{ $name | quote }} >/dev/null 2>&1 || true
+claude mcp add-json -s user {{ $name | quote }} {{ $cfg | toJson | quote }} >/dev/null 2>&1 \
+  && echo "  + {{ $name }}" || echo "  ! {{ $name }} failed"
+{{- end }}

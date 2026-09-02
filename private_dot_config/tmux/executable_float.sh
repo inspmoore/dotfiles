@@ -14,6 +14,7 @@ SESSION="float-${WINDOW_ID}"
 ACTION="${1:-toggle}"
 WIDTH_VAR="FLOAT_WIDTH_${WINDOW_ID}"
 HEIGHT_VAR="FLOAT_HEIGHT_${WINDOW_ID}"
+LAST_SYNCED_CWD_VAR="FLOAT_LAST_SYNCED_CWD_${WINDOW_ID}"
 DEFAULT_WIDTH="80%"
 DEFAULT_HEIGHT="80%"
 
@@ -38,17 +39,22 @@ case "$ACTION" in
                 cwd=$(tmux display-message -p '#{pane_current_path}')
                 tmux new-session -d -s "$SESSION" -c "$cwd"
                 tmux set-option -t "$SESSION" status off
+                tmux setenv -g "$LAST_SYNCED_CWD_VAR" "$cwd"
             else
-                # Sync cwd — only safe when the float pane is at a shell prompt.
-                # Otherwise the keys would be interpreted by whatever program is
-                # running (e.g. nvim), corrupting its state.
+                # Sync cwd only if the float still sits at the cwd we last set —
+                # i.e. the user hasn't cd'd inside it. Once they have, this
+                # float's cwd is independent until they manually return to the
+                # last-synced dir. Sync uses send-keys, so it's only safe at a
+                # shell prompt; otherwise we'd inject keystrokes into nvim/etc.
                 float_cmd=$(tmux display -t "$SESSION" -p '#{pane_current_command}')
                 case "$float_cmd" in
                     bash|zsh|fish|sh|dash|ksh|tcsh)
                         cwd=$(tmux display-message -p '#{pane_current_path}')
                         float_cwd=$(tmux display -t "$SESSION" -p '#{pane_current_path}')
-                        if [ "$cwd" != "$float_cwd" ]; then
+                        last_synced=$(tmux showenv -g "$LAST_SYNCED_CWD_VAR" 2>/dev/null | cut -d= -f2-)
+                        if [ "$float_cwd" = "$last_synced" ] && [ "$cwd" != "$float_cwd" ]; then
                             tmux send-keys -t "$SESSION" " cd \"$cwd\"" C-m
+                            tmux setenv -g "$LAST_SYNCED_CWD_VAR" "$cwd"
                         fi
                         ;;
                 esac

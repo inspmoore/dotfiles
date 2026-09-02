@@ -1,0 +1,23 @@
+#!/bin/bash
+# Reinstall Claude Code marketplaces + plugins declared in dot_claude/managed-plugins.json.
+# Reruns only when that manifest changes.
+# manifest hash: {{ include "dot_claude/managed-plugins.json" | sha256sum }}
+set -uo pipefail
+
+if ! command -v claude >/dev/null 2>&1; then
+  echo "claude CLI not found - skipping plugin bootstrap"; exit 0
+fi
+
+{{- $m := (include "dot_claude/managed-plugins.json" | fromJson) }}
+
+echo "==> Claude marketplaces"
+{{- range $name, $repo := $m.marketplaces }}
+claude plugin marketplace add {{ $repo | quote }} >/dev/null 2>&1 \
+  && echo "  + {{ $name }}" || echo "  = {{ $name }} (already present or unreachable)"
+{{- end }}
+
+echo "==> Claude plugins"
+{{- range $p := $m.plugins }}
+claude plugin install {{ $p | quote }} >/dev/null 2>&1 \
+  && echo "  + {{ $p }}" || echo "  = {{ $p }} (already installed or unavailable)"
+{{- end }}

@@ -1,0 +1,52 @@
+#!/bin/bash
+# chezmoi `modify_` script -> target: ~/.claude/settings.json
+#
+# WHY THIS IS A SCRIPT AND NOT A PLAIN FILE:
+# Claude Code writes to settings.json at runtime (/model, /config, theme,
+# effortLevel, tui, plugin enable/disable...). A plain managed file means
+# chezmoi and Claude Code fight over it, and every `chezmoi apply` on machine B
+# clobbers the UI state machine B just wrote. This script receives the CURRENT
+# file on stdin and emits the merged result, so chezmoi owns SPECIFIC KEYS
+# rather than the whole file. Everything not listed below is passed through
+# untouched, which means zero drift in `chezmoi status`.
+set -euo pipefail
+
+current="$(cat)"
+[ -z "$current" ] && current='{}'          # fresh machine: no file yet
+
+# Fail safe: never destroy the user's settings just because jq is missing
+# (a brand-new Mac has no brew). Pass through unchanged instead.
+if ! command -v jq >/dev/null 2>&1; then
+  printf '%s\n' "$current"
+  echo "chezmoi: jq not found - ~/.claude/settings.json left unmanaged. Run: brew install jq" >&2
+  exit 0
+fi
+
+# ─── SHARED CONFIG: chezmoi enforces these keys on every machine ────────────
+# Only put things here that YOU author and that Claude Code does not rewrite
+# on its own. Anything toggleable from /config belongs in the passthrough set.
+read -r -d '' MANAGED <<'JSON' || true
+{
+  "hooks": {
+    "Stop": [
+      { "hooks": [ { "type": "command", "command": "afplay /System/Library/Sounds/Glass.aiff" } ] }
+    ],
+    "Notification": [
+      { "hooks": [ { "type": "command", "command": "afplay /System/Library/Sounds/Glass.aiff" } ] }
+    ]
+  }
+}
+JSON
+# ─── END SHARED CONFIG ──────────────────────────────────────────────────────
+#
+# Deliberately NOT managed here:
+#   enabledPlugins / extraKnownMarketplaces -> run_onchange_after_10-claude-plugins.sh
+#     (settings.json is not the source of truth for marketplaces anyway, and
+#      flipping these without the plugin payload installed produces dangling refs)
+#   model, theme, effortLevel, tui, voiceEnabled, autoCompactEnabled,
+#   teammateMode, agentPushNotifEnabled, skipAutoPermissionPrompt,
+#   skipWorkflowUsageWarning -> per-machine, written by the app, passed through
+
+# '*' is a recursive merge with the managed side winning.
+# No -S: preserving input key order avoids cosmetic reorder drift.
+jq --argjson managed "$MANAGED" '. * $managed' <<<"$current"

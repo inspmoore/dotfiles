@@ -1,3 +1,52 @@
 **/.DS_Store
 .config/zsh/.zcompdump
 .config/zsh/.zsh_history
+
+# ── Claude Code: runtime state, NEVER sync ──────────────────────────────────
+# ~/.claude.json is ~115KB of machine state: userID, statsig/growthbook caches,
+# per-project history for every repo you have opened. Syncing it is what makes
+# two machines fight. The bits worth sharing are rebuilt by the
+# run_onchange_after_*-claude-*.sh scripts from manifests we own.
+.claude.json
+.claude.json.backup
+.claude/__store.db
+.claude/history.jsonl
+.claude/settings.local.json
+.claude/.last-cleanup
+.claude/.last-update-result.json
+.claude/mcp-needs-auth-cache.json
+.claude/policy-limits.json
+.claude/remote-settings.json
+.claude/stats-cache.json
+.claude/security_warnings_state_*.json
+.claude/backups
+.claude/cache
+.claude/daemon
+.claude/debug
+.claude/downloads
+.claude/file-history
+.claude/ide
+.claude/jobs
+.claude/paste-cache
+.claude/projects
+.claude/security
+.claude/session-env
+.claude/sessions
+.claude/shell-snapshots
+.claude/statsig
+.claude/tasks
+.claude/teams
+.claude/telemetry
+.claude/todos
+# plugin payloads are a cache; reinstalled by 10-claude-plugins.sh
+.claude/plugins
+# skill payloads are symlinks into ~/.agents/skills, managed by `npx skills`
+# and reinstalled by 30-claude-skills.sh from the synced lock file
+.agents/skills
+
+# ── Not chezmoi's business ──────────────────────────────────────────────────
+# nvim lives in an exact_ dir, so without this chezmoi DELETES this local file
+.config/nvim/.claude
+
+# repo documentation, not a dotfile
+README-claude.md

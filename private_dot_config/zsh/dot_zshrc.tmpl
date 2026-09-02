@@ -88,7 +88,7 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 eval "$(rbenv init -)"
 
-eval "$(fnm env)"
+eval "$(fnm env --use-on-cd --version-file-strategy=recursive)"
 
 # pnpm
 export PNPM_HOME="{{ .chezmoi.homeDir }}/Library/pnpm"
@@ -98,3 +98,9 @@ case ":$PATH:" in
 esac
 # pnpm end
 export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
+
+# opencode
+# Runtime guard, not a chezmoi conditional: on a fresh machine `chezmoi apply`
+# runs BEFORE opencode is installed, so a template-time check would bake in the
+# wrong answer. This re-evaluates on every shell start instead.
+[ -d "{{ .chezmoi.homeDir }}/.opencode/bin" ] && export PATH="{{ .chezmoi.homeDir }}/.opencode/bin:$PATH"

@@ -1,0 +1,28 @@
+{
+  "ios-simulator": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "ios-simulator-mcp"
+    ],
+    "env": {}
+  },
+  "react-native-debugger-mcp": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@twodoorsdev/react-native-debugger-mcp"
+    ],
+    "env": {}
+  },
+  "context7": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@upstash/context7-mcp"
+    ],
+    "env": {}
+  }
+}

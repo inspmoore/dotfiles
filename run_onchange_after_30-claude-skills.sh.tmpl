@@ -1,0 +1,21 @@
+#!/bin/bash
+# Reinstall third-party agent skills recorded in ~/.agents/.skill-lock.json
+# via the `npx skills` CLI that manages them.
+# The hash below is a STABLE projection (name=source pairs only) so routine
+# timestamp/hash churn inside the lock file does not retrigger reinstalls:
+# skills: {{ range $n, $s := (include "dot_agents/dot_skill-lock.json" | fromJson).skills }}{{ $n }}={{ $s.source }};{{ end }}
+set -uo pipefail
+
+if ! command -v npx >/dev/null 2>&1; then
+  echo "npx not found - skipping skill bootstrap"; exit 0
+fi
+
+echo "==> Agent skills (global)"
+{{- range $name, $s := (include "dot_agents/dot_skill-lock.json" | fromJson).skills }}
+if [ -e "$HOME/.claude/skills/{{ $name }}" ]; then
+  echo "  = {{ $name }}"
+else
+  npx -y skills add -g -y -s {{ $name | quote }} {{ $s.source | quote }} >/dev/null 2>&1 \
+    && echo "  + {{ $name }}" || echo "  ! {{ $name }} failed ({{ $s.source }})"
+fi
+{{- end }}

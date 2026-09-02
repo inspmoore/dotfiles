@@ -1,0 +1,40 @@
+{
+  "marketplaces": {
+    "claude-plugins-official": "anthropics/claude-plugins-official",
+    "callstack-agent-skills": "callstackincubator/agent-skills",
+    "sentry-mcp": "getsentry/sentry-mcp"
+  },
+  "plugins": [
+    "aws-serverless@claude-plugins-official",
+    "chrome-devtools-mcp@claude-plugins-official",
+    "clangd-lsp@claude-plugins-official",
+    "claude-code-setup@claude-plugins-official",
+    "claude-md-management@claude-plugins-official",
+    "code-review@claude-plugins-official",
+    "code-simplifier@claude-plugins-official",
+    "commit-commands@claude-plugins-official",
+    "context7@claude-plugins-official",
+    "deploy-on-aws@claude-plugins-official",
+    "feature-dev@claude-plugins-official",
+    "github-actions@callstack-agent-skills",
+    "github@callstack-agent-skills",
+    "github@claude-plugins-official",
+    "kotlin-lsp@claude-plugins-official",
+    "learning-output-style@claude-plugins-official",
+    "lua-lsp@claude-plugins-official",
+    "notion@claude-plugins-official",
+    "playwright@claude-plugins-official",
+    "pr-review-toolkit@claude-plugins-official",
+    "ralph-loop@claude-plugins-official",
+    "react-native-best-practices@callstack-agent-skills",
+    "security-guidance@claude-plugins-official",
+    "sentry-mcp-experimental@sentry-mcp",
+    "sentry-mcp@sentry-mcp",
+    "sentry@claude-plugins-official",
+    "skill-creator@claude-plugins-official",
+    "superpowers@claude-plugins-official",
+    "swift-lsp@claude-plugins-official",
+    "typescript-lsp@claude-plugins-official",
+    "upgrading-react-native@callstack-agent-skills"
+  ]
+}

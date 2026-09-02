@@ -1,0 +1,151 @@
+{
+  "version": 3,
+  "skills": {
+    "find-skills": {
+      "source": "vercel-labs/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel-labs/skills.git",
+      "skillPath": "skills/find-skills/SKILL.md",
+      "skillFolderHash": "c2f31172b6f256272305a5e6e7228b258446899f",
+      "installedAt": "2026-01-30T11:09:37.901Z",
+      "updatedAt": "2026-01-30T11:09:37.901Z"
+    },
+    "typeorm": {
+      "source": "mindrally/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/mindrally/skills.git",
+      "skillPath": "typeorm/SKILL.md",
+      "skillFolderHash": "65508aa39add7fcc16b17e1e7d81dedab1768811",
+      "installedAt": "2026-02-04T10:01:12.787Z",
+      "updatedAt": "2026-02-04T10:01:12.787Z"
+    },
+    "chrome-devtools": {
+      "source": "mrgoonie/claudekit-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/mrgoonie/claudekit-skills.git",
+      "skillPath": ".claude/skills/chrome-devtools/SKILL.md",
+      "skillFolderHash": "6fe1abe8247d526712cc5d8c897a4b80dc825871",
+      "installedAt": "2026-02-09T15:14:04.676Z",
+      "updatedAt": "2026-02-09T15:14:04.676Z"
+    },
+    "html": {
+      "source": "mindrally/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/mindrally/skills.git",
+      "skillPath": "html/SKILL.md",
+      "skillFolderHash": "20bbc5de4e2fe0ffb30616f0c49baec6e31b557d",
+      "installedAt": "2026-02-13T13:04:09.611Z",
+      "updatedAt": "2026-02-13T13:04:09.611Z"
+    },
+    "vercel-composition-patterns": {
+      "source": "vercel-labs/agent-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel-labs/agent-skills.git",
+      "skillPath": "skills/composition-patterns/SKILL.md",
+      "skillFolderHash": "bf90d0a4b83ea054653350f9c67f6de235d3a368",
+      "installedAt": "2026-02-16T15:38:13.149Z",
+      "updatedAt": "2026-02-16T15:38:13.149Z"
+    },
+    "vercel-react-best-practices": {
+      "source": "vercel-labs/agent-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel-labs/agent-skills.git",
+      "skillPath": "skills/react-best-practices/SKILL.md",
+      "skillFolderHash": "079b06a135401704ea94ab74c7c9d86c92ba259f",
+      "installedAt": "2026-02-16T15:38:13.183Z",
+      "updatedAt": "2026-02-16T15:38:13.183Z"
+    },
+    "web-design-guidelines": {
+      "source": "vercel-labs/agent-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel-labs/agent-skills.git",
+      "skillPath": "skills/web-design-guidelines/SKILL.md",
+      "skillFolderHash": "3116f3e62dbd02b44a598b1aa690d2a8938e8f89",
+      "installedAt": "2026-02-16T15:38:13.219Z",
+      "updatedAt": "2026-02-16T15:38:13.219Z"
+    },
+    "sentry-react-sdk": {
+      "source": "getsentry/sentry-agent-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/getsentry/sentry-agent-skills.git",
+      "skillPath": "skills/sentry-react-sdk/SKILL.md",
+      "skillFolderHash": "6f0baa693c4096feffaaf5b8420a3580a12ab320",
+      "installedAt": "2026-02-27T15:59:35.025Z",
+      "updatedAt": "2026-02-27T15:59:35.025Z"
+    },
+    "agent-device": {
+      "source": "callstack/agent-device",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/callstack/agent-device.git",
+      "skillPath": "skills/agent-device/SKILL.md",
+      "skillFolderHash": "0ec63bf96844f74d57c222a6b69e1a7156e4a14a",
+      "installedAt": "2026-03-05T12:06:16.857Z",
+      "updatedAt": "2026-06-17T15:07:12.510Z"
+    },
+    "tanstack-query-best-practices": {
+      "source": "deckardger/tanstack-agent-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/deckardger/tanstack-agent-skills.git",
+      "skillPath": "skills/tanstack-query/SKILL.md",
+      "skillFolderHash": "b73085898a2015a0f33c98aef0f3f2ff4ee9454f",
+      "installedAt": "2026-03-10T10:07:40.155Z",
+      "updatedAt": "2026-03-10T10:07:40.155Z"
+    },
+    "react-native-best-practices": {
+      "source": "callstackincubator/agent-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/callstackincubator/agent-skills.git",
+      "skillPath": "skills/react-native-best-practices/SKILL.md",
+      "skillFolderHash": "f187d6532f1e9cf5124b187f5acacbacd0336053",
+      "pluginName": "react-native-best-practices",
+      "installedAt": "2026-04-29T11:41:14.934Z",
+      "updatedAt": "2026-04-29T11:41:14.934Z"
+    },
+    "react-native-unistyles-v3": {
+      "source": "jpudysz/react-native-unistyles",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/jpudysz/react-native-unistyles.git",
+      "skillPath": "skills/react-native-unistyles-v3/SKILL.md",
+      "skillFolderHash": "ac65d129ae33f792ce2799f6721af57d419ad6aa",
+      "installedAt": "2026-04-29T12:08:36.133Z",
+      "updatedAt": "2026-04-29T12:08:36.133Z"
+    },
+    "upgrade-react-navigation": {
+      "source": "react-navigation/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/react-navigation/skills.git",
+      "skillPath": "skills/upgrade-react-navigation/SKILL.md",
+      "skillFolderHash": "00ebcc30b93fed2ce07e25e91a021cbdf2783f91",
+      "installedAt": "2026-05-22T13:35:44.184Z",
+      "updatedAt": "2026-05-22T13:35:44.184Z"
+    },
+    "dogfood": {
+      "source": "callstack/agent-device",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/callstack/agent-device.git",
+      "skillPath": "skills/dogfood/SKILL.md",
+      "skillFolderHash": "d081d01713d306595bb0a492ad6d41228eadeef7",
+      "installedAt": "2026-06-17T15:07:12.511Z",
+      "updatedAt": "2026-06-17T15:07:12.511Z"
+    }
+  },
+  "dismissed": {
+    "findSkillsPrompt": true
+  },
+  "lastSelectedAgents": [
+    "amp",
+    "antigravity",
+    "antigravity-cli",
+    "cline",
+    "codex",
+    "cursor",
+    "deepagents",
+    "gemini-cli",
+    "github-copilot",
+    "kimi-code-cli",
+    "opencode",
+    "warp",
+    "zed",
+    "claude-code"
+  ]
+}

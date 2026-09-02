@@ -1,0 +1,7 @@
+# Third-party skills that are upstream git repos: track the SOURCE, not a copy.
+# chezmoi clones/refreshes these on `chezmoi apply --refresh-externals`, so the
+# new machine gets them automatically and they stay updatable.
+[".claude/skills/chezmoi"]
+    type = "git-repo"
+    url = "https://github.com/cosgroveb/chezmoi-skill.git"
+    refreshPeriod = "168h"
