@@ -25,6 +25,11 @@ fi
 # ─── SHARED CONFIG: chezmoi enforces these keys on every machine ────────────
 # Only put things here that YOU author and that Claude Code does not rewrite
 # on its own. Anything toggleable from /config belongs in the passthrough set.
+# The knowledge-store hooks live behind a stable, machine-independent path:
+# ~/.claude/knowledge-hooks is a symlink created by <clone>/_hooks/bootstrap.sh
+# pointing at wherever the store was cloned. That keeps this block portable.
+KHOOKS="$HOME/.claude/knowledge-hooks"
+
 read -r -d '' MANAGED <<'JSON' || true
 {
   "hooks": {
@@ -33,11 +38,20 @@ read -r -d '' MANAGED <<'JSON' || true
     ],
     "Notification": [
       { "hooks": [ { "type": "command", "command": "afplay /System/Library/Sounds/Glass.aiff" } ] }
+    ],
+    "SessionStart": [
+      { "matcher": "startup|resume|clear|compact",
+        "hooks": [ { "type": "command", "command": "__KHOOKS__/session-start.sh" } ] }
+    ],
+    "PostToolUse": [
+      { "matcher": "ExitPlanMode",
+        "hooks": [ { "type": "command", "command": "__KHOOKS__/exit-plan-mode.sh" } ] }
     ]
   },
   "alwaysThinkingEnabled": true
 }
 JSON
+MANAGED="${MANAGED//__KHOOKS__/$KHOOKS}"
 # ─── END SHARED CONFIG ──────────────────────────────────────────────────────
 #
 # Deliberately NOT managed here:

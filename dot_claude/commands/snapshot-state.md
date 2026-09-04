@@ -1,6 +1,24 @@
 ---
-description: Refresh knowledge/<effort>/state.md based on current session context
+description: Refresh $SCOPE/<effort>/state.md based on current session context
 ---
+
+## Scope resolution (read this first)
+
+Find the store, then the scope. Never hardcode either - the store can be cloned anywhere.
+
+1. Read `~/.claude/knowledge-root`: a single line holding the absolute path to the
+   knowledge store. Call it `$KROOT`. If that file is missing, the store is not
+   bootstrapped on this machine - tell the user to run `<clone>/_hooks/bootstrap.sh`
+   and stop.
+2. Read `$KROOT/_hooks/scope-map`, and `$KROOT/_hooks/scope-map.local` too if it exists
+   (tab-separated, `path-prefix -> scope dir`; a leading `~` means the home directory).
+3. Match the current working directory against every prefix; longest match wins. This is
+   what makes git worktrees and subprojects resolve to the right client.
+4. `$SCOPE` is then `$KROOT/<matched scope>`, e.g. `$KROOT/clients/<client>`.
+5. No match means the cwd belongs to no known client. Say so and stop - never write into
+   another client's scope, and never guess.
+
+All paths written `$SCOPE/...` below resolve against that.
 
 You are rewriting the `state.md` file for the current effort to reflect where work stands right now.
 
@@ -53,7 +71,7 @@ Show the drafted state.md. Wait for explicit approval or edits. Do NOT overwrite
 ## Step 4: Write + update _meta
 
 On approval:
-1. Replace `knowledge/<effort>/state.md` with the new content.
+1. Replace `$SCOPE/<effort>/state.md` with the new content.
 2. Update `_meta.md` `last_updated:` to today's date.
 3. Report path written.
 

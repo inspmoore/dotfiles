@@ -53,3 +53,9 @@ README-claude.md
 
 # repo documentation, not a dotfile
 MIGRATION.md
+
+# ── knowledge store: machine-local pointers, path differs per machine ───────
+# Written by <clone>/_hooks/bootstrap.sh. Syncing them would point machine B
+# at machine A's clone path.
+.claude/knowledge-root
+.claude/knowledge-hooks

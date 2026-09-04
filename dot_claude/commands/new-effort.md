@@ -1,14 +1,32 @@
 ---
-description: Scaffold a new effort folder under knowledge/
+description: Scaffold a new effort folder under the current scope
 ---
 
-Create a new effort folder under `knowledge/<slug>/` with all templates.
+## Scope resolution (read this first)
+
+Find the store, then the scope. Never hardcode either - the store can be cloned anywhere.
+
+1. Read `~/.claude/knowledge-root`: a single line holding the absolute path to the
+   knowledge store. Call it `$KROOT`. If that file is missing, the store is not
+   bootstrapped on this machine - tell the user to run `<clone>/_hooks/bootstrap.sh`
+   and stop.
+2. Read `$KROOT/_hooks/scope-map`, and `$KROOT/_hooks/scope-map.local` too if it exists
+   (tab-separated, `path-prefix -> scope dir`; a leading `~` means the home directory).
+3. Match the current working directory against every prefix; longest match wins. This is
+   what makes git worktrees and subprojects resolve to the right client.
+4. `$SCOPE` is then `$KROOT/<matched scope>`, e.g. `$KROOT/clients/<client>`.
+5. No match means the cwd belongs to no known client. Say so and stop - never write into
+   another client's scope, and never guess.
+
+All paths written `$SCOPE/...` below resolve against that.
+
+Create a new effort folder under `$SCOPE/<slug>/` with all templates.
 
 ## Step 1: Get the slug
 
 If the user passed `$ARGUMENTS`, treat it as the kebab-case slug. Otherwise ask.
 
-Validate: lowercase, kebab-case, no spaces. Reject names that conflict with existing effort folders (run `ls knowledge/` to check).
+Validate: lowercase, kebab-case, no spaces. Reject names that conflict with existing effort folders (run `ls $SCOPE/` to check).
 
 ## Step 2: Gather metadata
 
@@ -21,7 +39,7 @@ Ask the user:
 
 ## Step 3: Scaffold files
 
-Create `knowledge/<slug>/` with:
+Create `$SCOPE/<slug>/` with:
 
 ### `_meta.md`
 ```markdown
@@ -79,7 +97,7 @@ Append entries below. Newest at the bottom. Format documented in the `knowledge-
 
 ## Step 4: Update EFFORTS.md
 
-Add a row to the active efforts table in `knowledge/EFFORTS.md`:
+Add a row to the active efforts table in `$SCOPE/EFFORTS.md`:
 
 ```
 | [<slug>](<slug>/_meta.md) | <status> | <today> | <branch> | <touches> |
