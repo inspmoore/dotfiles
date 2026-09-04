@@ -88,6 +88,12 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 eval "$(rbenv init -)"
 
+# jenv - Java version manager. `enable-plugin export` is what sets JAVA_HOME,
+# which Gradle and Android builds read; plain `java` works without it.
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init - )"
+jenv enable-plugin export >/dev/null
+
 eval "$(fnm env --use-on-cd --version-file-strategy=recursive)"
 
 # pnpm
