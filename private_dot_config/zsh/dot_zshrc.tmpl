@@ -90,9 +90,14 @@ eval "$(rbenv init -)"
 
 # jenv - Java version manager. `enable-plugin export` is what sets JAVA_HOME,
 # which Gradle and Android builds read; plain `java` works without it.
+# PATH first so a ~/.jenv/bin install is discoverable, then guard: jenv is not
+# installed on every machine, and unguarded `jenv init` prints "command not
+# found" to stderr on every new shell ( >/dev/null only hides stdout ).
 export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init - )"
-jenv enable-plugin export >/dev/null
+if command -v jenv >/dev/null 2>&1; then
+  eval "$(jenv init -)"
+  jenv enable-plugin export >/dev/null
+fi
 
 eval "$(fnm env --use-on-cd --version-file-strategy=recursive)"
 
